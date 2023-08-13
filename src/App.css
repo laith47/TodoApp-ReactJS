@@ -1,17 +1,16 @@
-
-
 .App {
   text-align: center;
+}
+body {
+  margin: 0;
+  padding: 0;
+   height: 100vh;
+   height: 100dvh;
+
 
 }
-body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-
-.App-logo { 
+.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -37,60 +36,48 @@ body{
   color: #61dafb;
 }
 
-
-/* .main-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-} */
-
-
-.inner-container{
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-  min-width: 45rem;
-  min-height: 37rem;
-  border-radius: .2rem;
-  display:flex;
-  flex-direction: column;
-  gap:.5rem;
+.main-container {
+  height: 100%;
+  width: 100%;
 
 }
-.task-component{
+
+.inner-container {
+  height: 100%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+}
+.task-component {
   transition: background-color 0.5s ease-in 0.3s;
 }
-.title{
+.title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   /* border:1px solid red; */
-  border-radius:.2rem;    
-  margin:.2rem .2rem .2rem .2rem;
-
-
+  border-radius: 0.2rem;
+  margin: 0.2rem 0.2rem 0.2rem 0.2rem;
 }
-.add-button{
+.material-symbols-outlined {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.add-task-button {
   width: 5rem;
   height: 2rem;
-  background-color: rgb(24, 195, 24);
-  border-radius: .2rem;
-  color:white;
-  font-family: 'Roboto Mono', monospace;
+  border-radius: 0.2rem;
+  color: white;
+  font-family: "Roboto Mono", monospace;
   font-size: 1.1rem;
-  border:none;
+  border: none;
 }
-.close-button{
-  width: 5rem;
-  height: 2rem;
-  background-color: red;
-  border-radius: .2rem;
-  color:white;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 1.1rem;
-  border:none;
-}
-
 
 @keyframes App-logo-spin {
   from {

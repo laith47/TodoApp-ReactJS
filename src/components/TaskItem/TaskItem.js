@@ -1,26 +1,34 @@
 import "./TaskItem.css";
 import { useDispatch } from "react-redux";
 import { removeTask, toggleTask, editTask, toggleEditTask } from "../../redux/task";
-// import TextField from "@mui/material/TextField";
 
 import { useState } from "react";
 
-function Task({ tasks }) {
+function Task({ tasks, darkMode }) {
+    const isDarkMode = darkMode;
+    //TODO:change save function to become a form
+    // const handleEditSubmit=(task,taskTitle,e)=>{
+    //     e.preventDefault();
+    //     dispatch(editTask({ task, taskTitle }))
+    // }
+
     const [taskTitle, setTaskTitle] = useState('');
     const dispatch = useDispatch();
     return tasks.map((task) => (
-        <div
-            key={task.id}
-            className={task.isDone ? "task-done" : "task"}
+        <div key={task.id}
+            className="task"
+            style={{
+                backgroundColor: isDarkMode ? '#205295' : 'white',
+                color: isDarkMode && "white",
+                borderLeft: task.isDone && "5px solid rgb(24, 195, 24)",
+            }}
         >
             <div className="content">
                 {task.isEdit ? (
-                    <div className="edit-input">
-                        <input
-                            className="input"
-                            id="outlined-basic"
+                    <div style={{ backgroundColor: isDarkMode && "white" }} className="edit-container"
+                    >
+                        <input className="edit-input" autofocus="autofocus"
                             label="Task"
-                            variant="outlined"
                             onChange={(e) => setTaskTitle(e.target.value)}
                         ></input>
                         <button
@@ -41,18 +49,18 @@ function Task({ tasks }) {
                 <span>{task.creationDate}</span>
             </div>
             <div className="icon-container">
-                <span
+                <button
                     className="material-symbols-outlined"
                     onClick={() => dispatch(toggleTask(task.id))}
                 >
                     Done
-                </span>
-                <span
+                </button>
+                <button
                     className="material-symbols-outlined"
                     onClick={() => dispatch(removeTask(task.id))}
                 >
                     close
-                </span>
+                </button>
             </div>
         </div>
     ));

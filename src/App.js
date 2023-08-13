@@ -14,28 +14,35 @@ function App() {
   // ];
   const { taskArray } = useSelector((state) => state.task);
   const [showAddTask, toggleAddTask] = useState(false);
+  const [isDarkMode, toggleDarkMode] = useState(false)
 
   return (
 
-    <body>
-    <div className="main-container">
-      <div className="inner-container">
-        <div className="title">
-          <h3>Task tracker</h3>
-          <button variant="contained"
-            onClick={() => toggleAddTask(!showAddTask)}
-            className={showAddTask ? "close-button" : "add-button"}
-          >
-            {showAddTask ? 'Close' : 'Add'}
-          </button>
-        </div>
+    <body >
+      <div className="main-container">
+        <div style={{ backgroundColor: isDarkMode ? '#0A2647' : 'white' }} className="inner-container">
+          <div style={{ color: isDarkMode && "white" }} className="title">
+            <h3>Task tracker</h3>
+            <button onClick={() => { toggleDarkMode(!isDarkMode) }}
+              className="material-symbols-outlined"
+            >
+              {isDarkMode ? "light_mode" : "dark_mode"}
+            </button>
 
-        {showAddTask && <AddTask className="task-component"
-        ></AddTask>
-        }
-        <Task tasks={taskArray}  ></Task>
+            <button variant="contained"
+              className='add-task-button'
+              onClick={() => toggleAddTask(!showAddTask)}
+              style={{ backgroundColor: showAddTask ? "red" : "rgb(24, 195, 24)" }}
+            >
+              {showAddTask ? 'Close' : 'Add'}
+            </button>
+          </div>
+          {showAddTask && <AddTask darkMode={isDarkMode} className="task-component"
+          ></AddTask>
+          }
+          <Task tasks={taskArray} darkMode={isDarkMode} ></Task>
+        </div>
       </div>
-    </div>
     </body>
   );
 }

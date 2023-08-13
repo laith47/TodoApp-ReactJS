@@ -1,34 +1,45 @@
+.task-form {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+  border-radius: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 0.2rem 0 0.2rem;
+  padding: 1.5rem 0 1.5rem 0;
+  box-sizing: border-box;
+}
+.input {
+  width: 60%;
+  min-height: 2rem;
+  background-color: white;
+  border: 0.2px solid rgb(24, 195, 24);
+  outline: none;
+  border-radius: 0.2rem;
+  padding: 1rem 0.875rem;
+  overflow:auto;
+}
 
-.task-form{
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-    border-radius: .2rem;
+.input:focus {
+  box-shadow: 0 0 5px rgb(24, 195, 24);
+}
+
+.task-container{
+    width: 75%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-wrap: wrap; */
-    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
     gap:1rem;
-    margin:0 .2rem 0 .2rem;
-    padding:.7rem 0 .7rem 0;   
-    box-sizing:border-box; 
-            /* border:1px solid red; */
-    
 }
-.input{
-    width: 90%;
-    border-radius: .2rem;
-    min-height: 2rem;
-
-}
-
-
-.create-button{
-    width: 90%;
-    height:2rem;
-    background-color: rgb(24, 195, 24);
-    border-radius: .2rem;
-    color:white;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.1  rem;
-    border:none;
+.create-button {
+  width: 60%;
+  height: 2.4rem;
+  background-color: rgb(24, 195, 24);
+  border-radius: 0.2rem;
+  color: white;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.2rem;
+  border: none;
 }
