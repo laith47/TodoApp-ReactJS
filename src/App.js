@@ -12,9 +12,21 @@ function App() {
   //   {id:2, taskTitle: 'complete the react course', creationDate: new Date().toISOString().substring(0, 10),isDone:false },
   //   {id:3, taskTitle: 'create a new project', creationDate: new Date().toISOString().substring(0, 10),isDone:false }
   // ];
+
+
+
+  const setDarkMode = () => {
+    toggleDarkMode(!getDarkMode());
+    localStorage.setItem('isDarkMode', !getDarkMode());
+  }
+  const getDarkMode = () => {
+    const savedMode = localStorage.getItem('isDarkMode');
+    return savedMode ? JSON.parse(savedMode) : false;
+  }
+
+  const [isDarkMode, toggleDarkMode] = useState(getDarkMode())
   const { taskArray } = useSelector((state) => state.task);
   const [showAddTask, toggleAddTask] = useState(false);
-  const [isDarkMode, toggleDarkMode] = useState(false)
 
   return (
 
@@ -23,7 +35,7 @@ function App() {
         <div style={{ backgroundColor: isDarkMode ? '#0A2647' : 'white' }} className="inner-container">
           <div style={{ color: isDarkMode && "white" }} className="title">
             <h3>Task tracker</h3>
-            <button onClick={() => { toggleDarkMode(!isDarkMode) }}
+            <button onClick={() => { setDarkMode() }}
               className="material-symbols-outlined"
             >
               {isDarkMode ? "light_mode" : "dark_mode"}
@@ -32,7 +44,7 @@ function App() {
             <button variant="contained"
               className='add-task-button'
               onClick={() => toggleAddTask(!showAddTask)}
-              style={{ backgroundColor: showAddTask ? "red" : "rgb(24, 195, 24)" }}
+              style={{ backgroundColor: showAddTask ? "red" : "#18C318" }}
             >
               {showAddTask ? 'Close' : 'Add'}
             </button>
