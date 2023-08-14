@@ -44,7 +44,7 @@ function App() {
             <button variant="contained"
               className='add-task-button'
               onClick={() => toggleAddTask(!showAddTask)}
-              style={{ backgroundColor: showAddTask ? "red" : "#18C318" }}
+              style={{ backgroundColor: showAddTask ? "#FF1919" : "#18C318" }}
             >
               {showAddTask ? 'Close' : 'Add'}
             </button>

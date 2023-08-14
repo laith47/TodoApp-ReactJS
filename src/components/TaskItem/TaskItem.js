@@ -30,6 +30,7 @@ function Task({ tasks, darkMode }) {
                         <input className="edit-input" autofocus="autofocus"
                             label="Task"
                             onChange={(e) => setTaskTitle(e.target.value)}
+                            placeholder={task.taskTitle}
                         ></input>
                         <button
                             onClick={() => dispatch(editTask({ task, taskTitle }), dispatch(toggleEditTask(task)))}
@@ -38,6 +39,11 @@ function Task({ tasks, darkMode }) {
                         >
                             save
                         </button>
+                        <button
+                            onClick={() => dispatch(toggleEditTask(task))}
+                            className="material-symbols-outlined"
+                        >
+                            close</button>
                     </div>
                 ) : (
                     <div>
@@ -49,17 +55,17 @@ function Task({ tasks, darkMode }) {
                 <span>{task.creationDate}</span>
             </div>
             <div className="icon-container">
-                <button
+                <button style={{color:"#18C318"}}
                     className="material-symbols-outlined"
                     onClick={() => dispatch(toggleTask(task.id))}
                 >
                     Done
                 </button>
-                <button
+                <button style={{color:"red"}}
                     className="material-symbols-outlined"
                     onClick={() => dispatch(removeTask(task.id))}
                 >
-                    close
+                    delete
                 </button>
             </div>
         </div>
