@@ -3,9 +3,10 @@
 }
 body {
   margin: 0;
-  padding: 0;
+  padding: 0; 
    height: 100vh;
    height: 100dvh;
+
 
 
 }
@@ -43,6 +44,7 @@ body {
 }
 
 .inner-container {
+  background-color:#f7f7f7;
   height: 100%;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
   display: flex;

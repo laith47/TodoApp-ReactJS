@@ -1,19 +1,16 @@
 import "./TaskItem.css";
 import { useDispatch } from "react-redux";
 import { removeTask, toggleTask, editTask, toggleEditTask } from "../../redux/task";
+// import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import { useState } from "react";
 
 function Task({ tasks, darkMode }) {
     const isDarkMode = darkMode;
-    //TODO:change save function to become a form
-    // const handleEditSubmit=(task,taskTitle,e)=>{
-    //     e.preventDefault();
-    //     dispatch(editTask({ task, taskTitle }))
-    // }
 
     const [taskTitle, setTaskTitle] = useState('');
     const dispatch = useDispatch();
+
     return tasks.map((task) => (
         <div key={task.id}
             className="task"
@@ -23,6 +20,7 @@ function Task({ tasks, darkMode }) {
                 borderLeft: task.isDone && "5px solid rgb(24, 195, 24)",
             }}
         >
+
             <div className="content">
                 {task.isEdit ? (
                     <div style={{ backgroundColor: isDarkMode && "white" }} className="edit-container"
@@ -55,13 +53,13 @@ function Task({ tasks, darkMode }) {
                 <span>{task.creationDate}</span>
             </div>
             <div className="icon-container">
-                <button style={{color:"#18C318"}}
+                <button style={{ color: "#18C318" }}
                     className="material-symbols-outlined"
                     onClick={() => dispatch(toggleTask(task.id))}
                 >
                     Done
                 </button>
-                <button style={{color:"red"}}
+                <button style={{ color: "red" }}
                     className="material-symbols-outlined"
                     onClick={() => dispatch(removeTask(task.id))}
                 >
