@@ -5,27 +5,51 @@ import {
 } from 'react-redux';
 import { useState } from 'react';
 import { postTask } from '../../redux/task';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
+import { toastr } from 'react-redux-toastr'
+
 
 
 function AddTask({ darkMode }) {
    const isDarkMode = darkMode;
-   const [taskTitle, setTaskTitle] = useState('');
+   const [taskTitle, setTaskTitle] = useState();
    const [creationDate] = useState(new Date().toISOString().substring(0, 10));
    const [isDone] = useState(false);
    const newTaskObject = { id: crypto.randomUUID(), taskTitle: taskTitle, creationDate: creationDate, isDone: isDone };
    const dispatch = useDispatch();
+   const toastrSettings = {
+      timeOut: 2000,
+      position: 'top-right',
+      closeButton: true,
+      progressBar: true,
+      newestOnTop: false,
+      preventDuplicates: false,
+      showDuration: '300',
+      hideDuration: '1000',
+      extendedTimeOut: '1000',
+      showEasing: 'swing',
+      hideEasing: 'linear',
+      showMethod: 'fadeIn',
+      hideMethod: 'fadeOut',
+      color:'orange'
+   };
    const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(postTask(newTaskObject));
-      const formToReset = document.getElementById('create-task');
-      formToReset.reset();
+      if (dispatch(postTask(newTaskObject))) {
+         toastr.success('Task Created', 'Success', toastrSettings)
+         const form = document.getElementById('create-task');
+         form.reset();
+      } else {
+         toastr.error('Task Was Not Created', "Fail", toastrSettings);
+
+      }
    }
    return (
       <div>
          <form id="create-task" style={{ backgroundColor: isDarkMode ? '#205295' : 'white' }} className="task-form" onSubmit={handleSubmit}
          >
             <div className="task-container">
-               <input className="input" id="outlined-basic" variant="outlined" onChange={(e) => {
+               <input required className="input" id="outlined-basic" variant="outlined" onChange={(e) => {
                   setTaskTitle(e.target.value)
                }}></input>
                <button className='create-button'
