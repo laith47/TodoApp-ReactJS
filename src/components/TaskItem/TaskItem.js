@@ -30,12 +30,12 @@ function Task({ tasks, darkMode }) {
                             onChange={(e) => setTaskTitle(e.target.value)}
                             placeholder={task.taskTitle}
                         ></input>
-                        <button
+                        <button class="material-symbols-outlined"
                             onClick={() => dispatch(editTask({ task, taskTitle }), dispatch(toggleEditTask(task)))}
 
                             className="save-button"
                         >
-                            save
+                            Done
                         </button>
                         <button
                             onClick={() => dispatch(toggleEditTask(task))}
@@ -57,7 +57,7 @@ function Task({ tasks, darkMode }) {
                     className="material-symbols-outlined"
                     onClick={() => dispatch(toggleTask(task.id))}
                 >
-                    Done
+                    task_alt
                 </button>
                 <button style={{ color: "red" }}
                     className="material-symbols-outlined"
