@@ -31,22 +31,34 @@ function AddTask({ darkMode }) {
       hideEasing: 'linear',
       showMethod: 'fadeIn',
       hideMethod: 'fadeOut',
-      color:'orange'
+      color: 'orange'
    };
-   const handleSubmit = (e) => {
+   const handleAddTaskFormSubmit = (e) => {
       e.preventDefault();
-      if (dispatch(postTask(newTaskObject))) {
-         toastr.success('Task Created', 'Success', toastrSettings)
-         const form = document.getElementById('create-task');
-         form.reset();
-      } else {
-         toastr.error('Task Was Not Created', "Fail", toastrSettings);
-
+      if (!newTaskObject.taskTitle) {
+         toastr.error('Task title cannot be empty', toastrSettings);
+         return;
       }
+
+      try {
+         const result = dispatch(postTask(newTaskObject));
+         if (result) {
+            toastr.success('Task Created', 'Success', toastrSettings)
+            const form = document.getElementById('create-task');
+            form.reset();
+         } else {
+            toastr.error('Task Was Not Created', "Fail", toastrSettings);
+
+         }
+      }
+      catch (error) {
+         toastr.error('Error', "error.message", toastrSettings);
+      }
+
    }
    return (
       <div>
-         <form id="create-task" style={{ backgroundColor: isDarkMode ? '#205295' : 'white' }} className="task-form" onSubmit={handleSubmit}
+         <form id="create-task" style={{ backgroundColor: isDarkMode ? '#205295' : 'white' }} className="task-form" onSubmit={handleAddTaskFormSubmit}
          >
             <div className="task-container">
                <input required className="input" id="outlined-basic" variant="outlined" onChange={(e) => {
