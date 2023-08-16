@@ -1,6 +1,6 @@
 import './App.css';
 import Task from './components/TaskItem/TaskItem';
-import AddTask from './components/AddTask/AddTask';
+import CreateTask from './components/CreateTask/CreateTask';
 import { useState } from 'react';
 import {
   useSelector
@@ -58,8 +58,8 @@ function App() {
 
 
         </div>
-        {showAddTask && <AddTask darkMode={isDarkMode} className="task-component"
-        ></AddTask>
+        {showAddTask && <CreateTask darkMode={isDarkMode} className="task-component"
+        ></CreateTask>
         }
         <Task tasks={taskArray} darkMode={isDarkMode} ></Task>
       </div>

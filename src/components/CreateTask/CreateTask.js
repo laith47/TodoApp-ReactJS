@@ -1,5 +1,5 @@
 import React from 'react';
-import './AddTask.css'
+import './CreateTask.css'
 import {
    useDispatch,
 } from 'react-redux';
@@ -10,7 +10,7 @@ import { toastr } from 'react-redux-toastr'
 
 
 
-function AddTask({ darkMode }) {
+function CreateTask({ darkMode }) {
    const isDarkMode = darkMode;
    const [taskTitle, setTaskTitle] = useState();
    const [creationDate] = useState(new Date().toISOString().substring(0, 10));
@@ -33,7 +33,7 @@ function AddTask({ darkMode }) {
       hideMethod: 'fadeOut',
       color: 'orange'
    };
-   const handleAddTaskFormSubmit = (e) => {
+   const CreateTaskHandler = (e) => {
       e.preventDefault();
       if (!newTaskObject.taskTitle) {
          toastr.error('Task title cannot be empty', toastrSettings);
@@ -58,7 +58,10 @@ function AddTask({ darkMode }) {
    }
    return (
       <div>
-         <form id="create-task" style={{ backgroundColor: isDarkMode ? '#205295' : 'white' }} className="task-form" onSubmit={handleAddTaskFormSubmit}
+         <form id="create-task"
+            style={{ backgroundColor: isDarkMode ? '#205295' : 'white' }}
+            className="task-form"
+            onSubmit={CreateTaskHandler}
          >
             <div className="task-container">
                <input required className="input" id="outlined-basic" variant="outlined" onChange={(e) => {
@@ -72,8 +75,8 @@ function AddTask({ darkMode }) {
    )
 }
 
-AddTask.propTypes = {};
+CreateTask.propTypes = {};
 
-AddTask.defaultProps = {};
+CreateTask.defaultProps = {};
 
-export default AddTask;
+export default CreateTask;
