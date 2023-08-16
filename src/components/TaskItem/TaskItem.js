@@ -5,7 +5,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import { useState } from "react";
 
-function Task({ tasks, darkMode }) {
+function TaskItem({ tasks, darkMode }) {
     const isDarkMode = darkMode;
 
     const [taskTitle, setTaskTitle] = useState('');
@@ -74,4 +74,4 @@ function Task({ tasks, darkMode }) {
 
 }
 
-export default Task;
+export default TaskItem;
