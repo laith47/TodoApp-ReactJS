@@ -11,12 +11,14 @@ import { toastr } from 'react-redux-toastr'
 
 
 function CreateTask({ darkMode }) {
+
    const isDarkMode = darkMode;
    const [taskTitle, setTaskTitle] = useState();
    const [creationDate] = useState(new Date().toISOString().substring(0, 10));
    const [isDone] = useState(false);
-   const newTaskObject = { id: crypto.randomUUID(), taskTitle: taskTitle, creationDate: creationDate, isDone: isDone };
+
    const dispatch = useDispatch();
+
    const toastrSettings = {
       timeOut: 2000,
       position: 'top-right',
@@ -34,12 +36,17 @@ function CreateTask({ darkMode }) {
       color: 'orange'
    };
    const CreateTaskHandler = (e) => {
+      const newTaskObject = {
+         id: crypto.randomUUID(),
+         taskTitle: taskTitle,
+         creationDate: creationDate,
+         isDone: isDone
+      };
       e.preventDefault();
       if (!newTaskObject.taskTitle) {
          toastr.error('Task title cannot be empty', toastrSettings);
          return;
       }
-
       try {
          const result = dispatch(postTask(newTaskObject));
          if (result) {
@@ -58,15 +65,18 @@ function CreateTask({ darkMode }) {
    }
    return (
       <div>
-         <form id="create-task"
+         <form
+            onSubmit={CreateTaskHandler}
+            id="create-task"
             style={{ backgroundColor: isDarkMode ? '#205295' : 'white' }}
             className="task-form"
-            onSubmit={CreateTaskHandler}
          >
             <div className="task-container">
-               <input required className="input" id="outlined-basic" variant="outlined" onChange={(e) => {
-                  setTaskTitle(e.target.value)
-               }}></input>
+               <input required className="input"
+                  onChange={(e) => {
+                     setTaskTitle(e.target.value)
+                  }}>
+               </input>
                <button className='create-button'
                >Create Task </button>
             </div>
