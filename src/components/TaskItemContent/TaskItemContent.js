@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editTask, toggleEditTask } from "../../redux/task";
+import MaterialButton from '../MaterialButton/MaterialButton';
 
 function TaskItemContent({ task, darkMode }) {
    const isDarkMode = darkMode;
@@ -19,26 +20,12 @@ function TaskItemContent({ task, darkMode }) {
                   onChange={(e) => setTaskTitle(e.target.value)}
                   placeholder={task.taskTitle}
                ></input>
-               <button class="material-symbols-outlined"
-                  onClick={() => dispatch(editTask({ task, taskTitle }), dispatch(toggleEditTask(task)))}
-
-                  className="save-button"
-               >
-                  Done
-               </button>
-               <button
-                  onClick={() => dispatch(toggleEditTask(task))}
-                  className="material-symbols-outlined"
-               >
-                  close</button>
+               <MaterialButton type={"Done"} functionName={() => dispatch(editTask({ task, taskTitle }), dispatch(toggleEditTask(task)))}></MaterialButton>
+               <MaterialButton type={"close"} functionName={() => dispatch(toggleEditTask(task))}></MaterialButton>
             </div>
          ) : (
-            <div>
-               <p className="task-title" onDoubleClick={() => dispatch(toggleEditTask(task))}>{task.taskTitle}</p>
-
-            </div>
+            <p className="task-title" onDoubleClick={() => dispatch(toggleEditTask(task))}>{task.taskTitle}</p>
          )}
-
          <span>{task.creationDate}</span>
       </div>
    )
