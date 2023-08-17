@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeTask, toggleTask } from "../../redux/task";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import TaskItemContent from "../TaskItemContent/TaskItemContent";
+import MaterialButton from "../MaterialButton/MaterialButton";
 
 function TaskItem({ tasks, darkMode }) {
     const isDarkMode = darkMode;
@@ -21,18 +22,16 @@ function TaskItem({ tasks, darkMode }) {
                 >
                     <TaskItemContent className="content" task={task} darkMode={darkMode}></TaskItemContent>
                     <div className="icon-container">
-                        <button style={{ color: "#18C318" }}
-                            className="material-symbols-outlined"
-                            onClick={() => dispatch(toggleTask(task.id))}
-                        >
-                            task_alt
-                        </button>
-                        <button style={{ color: "red" }}
-                            className="material-symbols-outlined"
-                            onClick={() => dispatch(removeTask(task.id))}
-                        >
-                            delete
-                        </button>
+                        <MaterialButton
+                            type={"task_alt"}
+                            color={"#18C318"}
+                            functionName={() => dispatch(toggleTask(task.id))}>
+                        </MaterialButton>
+                        <MaterialButton
+                            type={"delete"}
+                            color={"red"}
+                            functionName={() => dispatch(removeTask(task.id))}>
+                        </MaterialButton>
                     </div>
                 </div>
             </CSSTransition>
