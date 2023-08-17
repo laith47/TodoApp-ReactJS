@@ -3,6 +3,7 @@ import CreateTask from '../CreateTask/CreateTask';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import TaskItem from '../TaskItem/TaskItem';
+import MaterialButton from '../MaterialButton/MaterialButton';
 
 function Task() {
    const setDarkMode = () => {
@@ -22,18 +23,19 @@ function Task() {
       <div className="main-container">
          <div style={{ backgroundColor: isDarkMode ? '#0A2647' : 'white' }} className="inner-container">
             <div style={{ color: isDarkMode && "white" }} className="title">
+
                <h2>Task tracker</h2>
-               <button onClick={() => { setDarkMode() }}
-                  className="material-symbols-outlined"
-               >
-                  {isDarkMode ? "light_mode" : "dark_mode"}
-               </button>
-               <button className="material-symbols-outlined open"
-                  onClick={() => toggleAddTask(!showAddTask)}
-                  style={{ color: showAddTask ? "#FF1919" : "#18C318" }}
-               >
-                  {showAddTask ? 'cancel' : 'add_circle'}
-               </button>
+
+               <MaterialButton
+                  type={isDarkMode ? "light_mode" : "dark_mode"}
+                  functionName={() => { setDarkMode() }}>
+               </MaterialButton>
+
+               <MaterialButton
+                  color={showAddTask ? "#FF1919" : "#18C318"}
+                  type={showAddTask ? 'cancel' : 'add_circle'}
+                  functionName={() => toggleAddTask(!showAddTask)}>
+               </MaterialButton>
             </div>
             {showAddTask &&
                <CreateTask darkMode={isDarkMode} className="task-component"
