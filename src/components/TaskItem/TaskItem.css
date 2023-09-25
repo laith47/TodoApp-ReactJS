@@ -5,21 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* -webkit-transition: all .5s ease-out;
-  -moz-transition: all .5s ease-out;
-  -o-transition: all .5s ease-out;
-  transition: all .5s ease-out; */
-
 }
 
-/* .task:hover {
-  -webkit-transition: all .5s ease-out;
-  -moz-transition: all .5s ease-out;
-  -o-transition: all .5s ease-out;
-  transition: all .5s ease-out;
-
-  background-color: green !important;
-} */
 .main-task-container{
   display: flex;
   flex-direction: column;
@@ -86,8 +73,6 @@
   padding: 0;
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
-
-
 
 .fade-enter{
 opacity: 0;

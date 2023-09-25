@@ -1,12 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-// const taskData = [
-//     { id: 1, taskTitle: 'finish tasks project', creationDate: new Date().toISOString().substring(0, 10), isDone: true, isEdit: false },
-//     { id: 2, taskTitle: 'complete the react course', creationDate: new Date().toISOString().substring(0, 10), isDone: false, isEdit: false },
-//     { id: 3, taskTitle: 'create a new project', creationDate: new Date().toISOString().substring(0, 10), isDone: false, isEdit: false }
-// ];
 
 const getTasks = {
-    retrievedTasks: JSON.parse(localStorage.getItem('tasks')),
+    retrievedTasks: JSON.parse(localStorage.getItem('tasks')) || [],
 }
 const initialState = {
     taskArray: getTasks.retrievedTasks,

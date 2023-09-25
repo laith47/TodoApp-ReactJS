@@ -10,33 +10,35 @@ function TaskItem({ tasks, darkMode }) {
 
     const dispatch = useDispatch();
 
-    return (<TransitionGroup component="div" className="main-task-container">
-        {tasks.map((task) => (
-            <CSSTransition classNames="fade" timeout={300} key={task.id}>
-                <div className="task"
-                    style={{
-                        backgroundColor: isDarkMode ? '#205295' : 'white',
-                        color: isDarkMode && "white",
-                        borderLeft: task.isDone && "5px solid rgb(24, 195, 24)",
-                    }}
-                >
-                    <TaskItemContent className="content" task={task} darkMode={darkMode}></TaskItemContent>
-                    <div className="icon-container">
-                        <MaterialButton
-                            type={"task_alt"}
-                            color={"#18C318"}
-                            functionName={() => dispatch(toggleTask(task.id))}>
-                        </MaterialButton>
-                        <MaterialButton
-                            type={"delete"}
-                            color={"red"}
-                            functionName={() => dispatch(removeTask(task.id))}>
-                        </MaterialButton>
+    return (
+
+        <TransitionGroup component="div" className="main-task-container">
+            {tasks.map((task) => (
+                <CSSTransition classNames="fade" timeout={300} key={task.id}>
+                    <div className="task"
+                        style={{
+                            backgroundColor: isDarkMode ? '#205295' : 'white',
+                            color: isDarkMode && "white",
+                            borderLeft: task.isDone && "5px solid rgb(24, 195, 24)",
+                        }}
+                    >
+                        <TaskItemContent className="content" task={task} darkMode={darkMode}></TaskItemContent>
+                        <div className="icon-container">
+                            <MaterialButton
+                                type={"task_alt"}
+                                color={"#18C318"}
+                                functionName={() => dispatch(toggleTask(task.id))}>
+                            </MaterialButton>
+                            <MaterialButton
+                                type={"delete"}
+                                color={"red"}
+                                functionName={() => dispatch(removeTask(task.id))}>
+                            </MaterialButton>
+                        </div>
                     </div>
-                </div>
-            </CSSTransition>
-        ))}
-    </TransitionGroup>)
+                </CSSTransition>
+            ))}
+        </TransitionGroup>)
 
 }
 

@@ -18,8 +18,10 @@ function Task() {
    const [isDarkMode, toggleDarkMode] = useState(getDarkMode())
    const { taskArray } = useSelector((state) => state.task);
    const [showAddTask, toggleAddTask] = useState(false);
+   console.log(taskArray);
 
    return (
+
       <div className="main-container">
          <div style={{ backgroundColor: isDarkMode ? '#0A2647' : 'white' }} className="inner-container">
             <div style={{ color: isDarkMode && "white" }} className="title">
@@ -41,8 +43,12 @@ function Task() {
                <CreateTask darkMode={isDarkMode} className="task-component"
                ></CreateTask>
             }
-            <TaskItem tasks={taskArray} darkMode={isDarkMode} ></TaskItem>
+            {taskArray.length ?
+               <TaskItem tasks={taskArray} darkMode={isDarkMode} ></TaskItem> : <div className="noTasks">
+                  <h3>There are currently no tasks. Click on the 'Create' icon at the top right corner to create a task.</h3></div>
+            }
          </div>
+
       </div>
 
    );

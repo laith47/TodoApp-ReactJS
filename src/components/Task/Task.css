@@ -1,103 +1,97 @@
 .App {
-    text-align: center;
-  }
-  body {
-    margin: 0;
-    padding: 0; 
-    height:100%;
-    min-height: 100%;
-  }
-  
+  text-align: center;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100%;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    height: 40vmin;
-    pointer-events: none;
+    animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.main-container {
+  height: 100%;
+  width: 100%;
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+.open {
+  font-size: 2rem;
+}
+
+.inner-container {
+  height: 100%;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  height: 100%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
   
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
+}
+.task-component {
+  transition: background-color 0.5s ease-in 0.3s;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  /* border:1px solid red; */
+  border-radius: 0.2rem;
+  margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+}
+.material-symbols-outlined {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.add-task-button {
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.2rem;
+  color: white;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.1rem;
+  border: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  to {
+    transform: rotate(360deg);
   }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  .main-container {
-    height: 100%;
-    width: 100%;
-  
-  
-  }
-  .material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
-  }
-  .open{
-    font-size:2rem;
-  }
-  
-  
-  .inner-container {
-      height:100%;
-      min-height: 100vh;
-    background-color:#f7f7f7;
-    height: 100%;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 2rem;
-  }
-  .task-component {
-    transition: background-color 0.5s ease-in 0.3s;
-  }
-  .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    /* border:1px solid red; */
-    border-radius: 0.2rem;
-    margin: 0.2rem 0.2rem 0.2rem 0.2rem;
-  }
-  .material-symbols-outlined {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    padding: 0;
-  }
-  .add-task-button {
-    width: 5rem;
-    height: 2rem;
-    border-radius: 0.2rem;
-    color: white;
-    font-family: "Roboto Mono", monospace;
-    font-size: 1.1rem;
-    border: none;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
+}
+
